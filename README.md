@@ -51,14 +51,22 @@ Logs showing how the HFT strategies perform under different market conditions.
 Detailed report on the profits and number of matched orders on the performance of the HFT strategies
 # Functional Requirements
 ## Detailed Features:
-Order Book Management: The system will maintain an order book in real-time containing current bid and ask prices while managing new orders, canceling and modifying existing orders, and sorting current orders on priority (the highest bid will match to the lowest ask).
-Order Matching Engine: Orders are matched according to prices (If a bidding price of an order matches or exceeds the ask price the trade is executed) and quantity then removes the order from the order book and logs the trade.
-Arbitrage Strategy: The arbitrage strategy involves exploiting price differences of the same asset across different markets. HFT systems buy the asset at a lower price in one market and sell it at a higher price in another. Thus profiting from the discrepancy.
-Market-Making Strategy: The market-making strategy involves continuously placing buy and sell limit orders on a stock to profit from the bid-ask spread. HFT earns small, consistent profits by capturing the difference between the buying and selling prices.
+### Order Book Management: 
+The system will maintain an order book in real-time containing current bid and ask prices while managing new orders, canceling and modifying existing orders, and sorting current orders on priority (the highest bid will match to the lowest ask).
 
-Use Cases:
-Arbitrage Trading: Suppose the HFT system detects a price discrepancy between two stock exchanges. For example:
+### Order Matching Engine: 
+Orders are matched according to prices (If a bidding price of an order matches or exceeds the ask price the trade is executed) and quantity then removes the order from the order book and logs the trade.
+
+### Arbitrage Strategy: 
+The arbitrage strategy involves exploiting price differences of the same asset across different markets. HFT systems buy the asset at a lower price in one market and sell it at a higher price in another. Thus profiting from the discrepancy.
+
+### Market-Making Strategy: 
+The market-making strategy involves continuously placing buy and sell limit orders on a stock to profit from the bid-ask spread. HFT earns small, consistent profits by capturing the difference between the buying and selling prices.
+
+## Use Cases:
+### Arbitrage Trading: 
+Suppose the HFT system detects a price discrepancy between two stock exchanges. For example:
 Stock exchange A lists a stock at ₹10.50, and exchange B lists the stock at ₹10.55. The HFT places a buy order at ₹10.50 in exchange A and a sell order for the same stock in exchange B at ₹10.55. Thus, the order-matching engine executes both trades, profiting the HFT from the arbitrage opportunity.
-Market Making: 
+### Market Making: 
 The HFT places a buy order slightly below the current market price and places a sell order slightly above the current market price.
 As the market prices change the system adjusts these orders to stay close to the market prices and then logs all executed trades.
