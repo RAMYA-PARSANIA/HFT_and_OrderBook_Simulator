@@ -1,9 +1,27 @@
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Java](https://img.shields.io/badge/Java-17%2B-orange)](https://www.oracle.com/java/)
+[![C++](https://img.shields.io/badge/C%2B%2B-17-00599C.svg)](https://en.cppreference.com/w/cpp/17)
+[![Algorithms](https://img.shields.io/badge/Algorithms-AVL%20Tree-brightgreen)](https://github.com/melohub-xbit/HFT-Simulator-DigitalDynamos)
+[![OOP](https://img.shields.io/badge/Paradigm-OOP-blue)](https://github.com/melohub-xbit/HFT-Simulator-DigitalDynamos)
+[![JNI](https://img.shields.io/badge/Bridge-JNI-red)](https://github.com/melohub-xbit/HFT-Simulator-DigitalDynamos)
+[![Swing](https://img.shields.io/badge/UI-Swing-orange)](https://github.com/melohub-xbit/HFT-Simulator-DigitalDynamos)
+
+
 # Introduction
 ## Team Details
 ### Team name: DigitalDynamos
 
+### Team Members:
+- [Aaryan Antala](https://github.com/AaryanAntala)
+- [Chaitya Shah](https://github.com/CShah44)
+- [Hitanshu Seth](https://github.com/Hitanshu078)
+- [Ramya Parsania](https://github.com/RAMYA-PARSANIA)
+- [Satyam Ambi](https://github.com/Satyam137)
+- [V Krishna Sai](https://github.com/melohub-xbit/)
 ## Project Overview:
 This project aims to simulate how an HFT (High-Frequency Trading) firm executes its strategies to profit through the stock exchanges. The project also simulates how a stock exchange manages its order book to match and execute orders efficiently using advanced data structures and algorithms to minimize the latency.
+
+
 
 ### Purpose:
 - The project offers a realistic simulation of an HFT system and order book management, helping users understand how the entire system functions.
@@ -70,3 +88,54 @@ Stock exchange A lists a stock at â‚¹10.50, and exchange B lists the stock at â‚
 ### Market Making: 
 - The HFT places a buy order slightly below the current market price and places a sell order slightly above the current market price.
 As the market prices change the system adjusts these orders to stay close to the market prices and then logs all executed trades.
+
+echo '
+## Instructions to Run
+
+##### The zip file contains the pre-compiled Java and C++ files, so in order to run the program, just run the following commands from the project root directory (after extracting the zip file, in the root directory of the project):
+```java -Djava.library.path="{your_path_to_root_directory_of_project}" -cp java HFTSimulation```
+---
+
+##### ```replace the {your_path_to_root_directory_of_project} with the path to the root directory of the project```
+
+##### If any changes are made or the above instructions don't work, please follow the instructions below to run the application:
+
+### Linux/MacOS Systems:
+1. From the project root directory, run:
+```g++ -I"$JAVA_HOME/include" -I"$JAVA_HOME/include/darwin" -shared -o libOrderBookNative.dylib cpp/jni/OrderBookNative.cpp cpp/core/OrderBook.cpp cpp/core/AVLTree.cpp cpp/core/Order.cpp```
+
+2. Navigate to /java folder and compile Java files:
+```cd java```
+```javac *.java```
+
+3. Start the program:
+```java -Djava.library.path=. HFTSimulation```
+
+### Windows Systems:
+1. Compile C++ files:
+```g++ -c -fPIC -I"C:\Program Files\Java\jdk-23\include" -I"C:\Program Files\Java\jdk-23\include\win32" cpp/core/OrderBook.cpp cpp/core/AVLTree.cpp cpp/core/Order.cpp cpp/jni/OrderBookNative.cpp```
+
+#### ```Make sure to replace the path with the actual path to your Java installation.```
+
+2. Create shared library:
+```g++ -shared OrderBook.o AVLTree.o Order.o OrderBookNative.o -o OrderBookNative.dll```
+
+3. Generate JNI headers:
+```javac -h . java/exchange/OrderBook.java```
+
+4. Navigate to java directory:
+```cd java```
+
+5. Compile Java files:
+```javac *.java```
+
+6. Run the program:
+```cd ..```
+```java -Djava.library.path="{your_path_to_root_directory_of_project}" -cp java HFTSimulation```
+
+#### OR
+In java directory:
+```java -Djava.library.path=. HFTSimulation```
+
+Note: Replace the Java paths and versions according to your system configuration.
+Also, the documentation for the project is also present in the repository.

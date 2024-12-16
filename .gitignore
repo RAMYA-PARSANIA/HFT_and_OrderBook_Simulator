@@ -1,0 +1,5 @@
+**/.vscode/
+*.log
+*.dylib
+*.DS_Store
+*.txt
